@@ -5,40 +5,12 @@
 
 
 class cd:
-    
-    def car_live_de(self,vid_path):
-        try :
-            import cv2
-            from time import sleep
-            cam = cv2.VideoCapture(vid_path)
-            classifier = cv2.CascadeClassifier("D:\\Learning\\ML & DL\\harrCascade File\\cars.xml")
-            def working(img):
-                sleep(.06)
-                img = cv2.resize(img,(600,600))
-                cars = classifier.detectMultiScale(img,1.1,2)
-                for (x,y,w,h) in cars:
-                    cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),2)
-                    cv2.putText(img,"Car",(x,y-5),cv2.FONT_HERSHEY_COMPLEX,.7,(0,0,255),1)
-                return img
-            while True:
-                temp,img = cam.read()
-                if temp:
-                    img = working(img)
-                    cv2.imshow("Live Car Detection",img)
-                    if cv2.waitKey(1)==13:
-                        break
-                else:
-                    return False
-            cv2.destroyAllWindows()
-            return True
-        except:
-            return False
     def car_img_de(self,img_path):
             import numpy as np
             import cv2
-            label_path = "D:\\Learning\\ML & DL\\Yolo\\coco.names"
-            config_path = "D:\\Learning\\ML & DL\\Yolo\\yolov3.cfg"
-            weights_path = "D:\\Learning\\ML & DL\\Yolo\\yolov3.weights"
+            label_path = "coco.names"
+            config_path = "yolov3.cfg"
+            weights_path = "yolov3.weights"
             yolo_shape = (416,416)
             network = cv2.dnn.readNetFromDarknet(config_path,weights_path)
             ln = network.getUnconnectedOutLayersNames()
