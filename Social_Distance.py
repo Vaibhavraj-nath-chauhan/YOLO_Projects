@@ -9,9 +9,9 @@ class sd:
         try:
             import cv2
             import numpy as np
-            label_path = "D:\\Learning\\ML & DL\\Yolo\\coco.names"
-            weight_path = "D:\\Learning\\ML & DL\\Yolo\\yolov3.weights"
-            config_path = "D:\\Learning\\ML & DL\\Yolo\\yolov3.cfg"
+            label_path = "coco.names"
+            weight_path = "yolov3.weights"
+            config_path = "yolov3.cfg"
             network = cv2.dnn.readNetFromDarknet(config_path,weight_path)
             ln =  network.getUnconnectedOutLayersNames()
             label = open(label_path).read().split()
